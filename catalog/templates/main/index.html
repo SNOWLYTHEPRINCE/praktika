@@ -1,0 +1,27 @@
+{% extends "layout/basic.html" %}
+
+
+{% block content %}
+
+<h2>Заявки</h2>
+<h4>Количество заявок, находящихся в статусе «Принято в работу» :{{count_orders}}</h4>
+{% if order_list %}
+<h4>4 последних заявок в статусе «Выполнено» :</h4><br>
+<div class="card-deck">
+{% for order in order_list %}
+<div class="card">
+    <img class="card-img-top" src="{{media_url}}{{order.photo}}" alt="Фото" style="wight: 286px; height: 200px">
+    <div class="card-body">
+        <h6 class="card-title">Название: {{order.name}}</h6>
+        <p class="card-text">Описание: {{order.description}}</p>
+    </div>
+    <div class="card-footer">
+        Дата: {{order.date}}
+    </div>
+</div>
+{% endfor %}
+{% else %}
+<p>нету.</p>
+{% endif %}
+</div>
+{% endblock %}
